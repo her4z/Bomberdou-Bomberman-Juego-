@@ -1,0 +1,123 @@
+@startuml
+
+title Classes - Class Diagram
+
+abstract class Driver{
+
+}
+
+class Map{
+  -skin:String
+  -size:Float
+  +entitiesNearBomb(): Int
+  +bbreakableNearBomb(): Int
+}
+
+
+abstract class Cells{
+  -size:Float
+  -quantity:Int
+}
+
+abstract class Entity {
+  -skin:String
+  -hitbox:Float
+  +vivo:Boolean
+  -vidas:Int
+  -position:cells[2]
+  -speed:Float
+  +getSpeed():Float
+  +setSpeed():Float
+  +getVivo():Boolean
+  +getVidas():Int
+  +setVidas():Int
+  -hitBy():None
+  +collide():None
+  +die():None
+}
+
+class TNTMan{
+  -buff:Boolean
+  +deployBomb(Bomb):None
+}
+
+
+class Enemies{
+  -damage: Int
+  +getDamage: Int 
+  +makeDamage(): Int
+}
+
+class Bomb{
+  -skin:String
+  -hitbox:Float
+  -speed:Float
+  -detTime:Int
+  -detRange:Int
+  -position:tuple[2]
+  +getPosition():Tuple(2)
+  +setPosition():Tublee(2)
+  +getSpeed():Float
+  +setSpeed():Float
+  +getDetTime():Int
+  +setDetTime():Int
+  +getDetRange():Int
+  +setDetRange():Int
+  +detonate(list[0..*], detRange, detTime):None
+  +getBlocksNear(): None
+}
+
+class Explotion{
+  +getDetRange():Int
+  +setDetRange():Int
+  +isEntityNear():Boolean
+
+}
+
+class Buffs{
+  -type:String
+  -duration:Float
+  -skin:String
+  -active:Boolean
+  -position:tuple(2)
+  +pickedUp():Boolean
+  +getDuration():Float
+  +getType():String
+}
+
+abstract class Blocks{
+  -skin:String
+  -collision:Boolean
+  -position:tuple(2)
+}
+
+class BBreakable{
+  -status:Boolean
+  +getStatus():
+}
+
+class BUnbreakable{
+}
+
+class BExit{
+}
+
+
+
+Blocks <|-- BExit
+Entity <|-- TNTMan
+Entity <|-- Enemies
+Blocks <|-- BBreakable
+Blocks <|-- BUnbreakable
+Buffs <- TNTMan
+Map <- Bomb
+Bomb -> Explotion
+Driver --> Entity
+Driver --> Bomb
+Driver --> Map
+Driver --> Explotion
+Driver --> Cells
+Driver --> Blocks
+@enduml
+
+
