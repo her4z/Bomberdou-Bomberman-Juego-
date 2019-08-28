@@ -5,32 +5,37 @@ title Classes - Class Diagram
 abstract class Driver{
 
 }
-
+abstract class Cells{
+  -size:tuple[2]
+  +getSize(): tuple[2]
+}
+abstract class Position{
+  -Cells[2]
+}
 class Map{
   -skin:String
-  -size:Float
-  +entitiesNearBomb(): Int
-  +bbreakableNearBomb(): Int
+  -size:Cells[n,m]
+  +entitiesNearPlace(position:Int[2]): Position[0..*]
+  +bBreakableNearPlace(position:Int[2]): Position[0..*]
+  +bUnbrealableNearPlace(position:I nt[2]): Position[0..*]
+  +__init__(n: Int, m: Int)
 }
 
 
-abstract class Cells{
-  -size:Float
-  -quantity:Int
-}
+
 
 abstract class Entity {
   -skin:String
-  -hitbox:Float
-  +vivo:Boolean
-  -vidas:Int
+  -hitbox:Cells[2]
+  -live:Boolean
+  -lifes:Int
   -position:cells[2]
   -speed:Float
   +getSpeed():Float
   +setSpeed():Float
-  +getVivo():Boolean
-  +getVidas():Int
-  +setVidas():Int
+  +getLive():Boolean
+  +getLifes():Int
+  +setLifes():Int
   -hitBy():None
   +collide():None
   +die():None
@@ -39,6 +44,8 @@ abstract class Entity {
 class TNTMan{
   -buff:Boolean
   +deployBomb(Bomb):None
+  -move(Direction): Position
+  +position:Cells[2]
 }
 
 
@@ -50,26 +57,26 @@ class Enemies{
 
 class Bomb{
   -skin:String
-  -hitbox:Float
+  -hitbox:Cells[2]
   -speed:Float
-  -detTime:Int
-  -detRange:Int
+  -detonationTime:Int
+  -detonationRange:Int
   -position:tuple[2]
   +getPosition():Tuple(2)
   +setPosition():Tublee(2)
   +getSpeed():Float
   +setSpeed():Float
-  +getDetTime():Int
-  +setDetTime():Int
-  +getDetRange():Int
-  +setDetRange():Int
+  +getDetonationTime():Int
+  +setDetonationTime():Int
+  +getDetonationRange():Int
+  +setDetonationRange():Int
   +detonate(list[0..*], detRange, detTime):None
   +getBlocksNear(): None
 }
 
 class Explotion{
-  +getDetRange():Int
-  +setDetRange():Int
+  +getDetonationRange():Int
+  +setDetonationRange():Int
   +isEntityNear():Boolean
 
 }
@@ -79,7 +86,7 @@ class Buffs{
   -duration:Float
   -skin:String
   -active:Boolean
-  -position:tuple(2)
+  -position:Cells[2]
   +pickedUp():Boolean
   +getDuration():Float
   +getType():String
@@ -92,18 +99,30 @@ abstract class Blocks{
 }
 
 class BBreakable{
-  -status:Boolean
-  +getStatus():
+  -canBeBreak: Boolean
+  -live: Boolean
+  +die()
+  +getCanBeBreak(): Boolean
+  +getLive(): Boolean
 }
 
 class BUnbreakable{
+  -canBeBreak: Boolean
+  -live: Boolean
+  +die(): None
+  +getCanBeBreak(): Boolean
+  +getLive(): Boolean
 }
 
 class BExit{
+  +die(): None
+  -PlayerGoThrough: Boolean
 }
 
 
-
+Bomb --> Cells
+Entity --> Cells
+Map --> Cells
 Blocks <|-- BExit
 Entity <|-- TNTMan
 Entity <|-- Enemies
@@ -118,6 +137,6 @@ Driver --> Map
 Driver --> Explotion
 Driver --> Cells
 Driver --> Blocks
+Position --> Cells
+
 @enduml
-
-
