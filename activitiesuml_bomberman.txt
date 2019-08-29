@@ -18,7 +18,7 @@ start
 		end fork		
 	fork again
 		:obstacle;
-		if (breakable) then (yes)
+		if (break?) then (yes)
 			:putBomb;
 			if (moveOutOfRange) then (True)
 			else (False)

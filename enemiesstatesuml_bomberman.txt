@@ -1,0 +1,9 @@
+startuml
+title Enemies
+[*] --> alive 
+state alive {
+[*] --> moving
+}
+alive -> dead
+
+@enduml
