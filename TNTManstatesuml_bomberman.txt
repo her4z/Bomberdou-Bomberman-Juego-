@@ -1,0 +1,12 @@
+@startuml
+title TNTMan
+[*] --> alive 
+state alive {
+[*] --> stopped
+stopped -> moving
+moving -> stopped
+
+}
+alive -> dead
+
+@enduml
