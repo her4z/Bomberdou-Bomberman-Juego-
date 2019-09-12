@@ -1,6 +1,5 @@
 @startuml
-title TNTMan
-[*] --> alive 
+title TNTMan 
 state alive {
 [*] --> stopped
 stopped -> moving
