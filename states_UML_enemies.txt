@@ -1,6 +1,5 @@
-startuml
-title Enemies
-[*] --> alive 
+@startuml
+title Enemies 
 state alive {
 [*] --> moving
 }

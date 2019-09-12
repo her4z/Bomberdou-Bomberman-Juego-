@@ -7,15 +7,16 @@ start
 	:findSomething;
 	fork
 		:buff;
-		fork
-			:morespeed;
-		fork again
-			:invulnerability;
-		fork again
-			:moreDetDamage;
-		fork again
-			:moreDetRange;
-		end fork		
+		
+  if (moreSpeed) then (yes)
+      :addSpeed;
+		elseif (invulnerability) then (yes)
+      :beInvulnerable;
+		elseif (moreDetDamage) then (yes)
+      :addDetDmg;
+		elseif (moreDetRange) then (yes)
+      :addDetRange;
+		endif
 	fork again
 		:obstacle;
 		if (break?) then (yes)
@@ -29,23 +30,21 @@ start
 	endif
 	fork again
 		:enemy;
-		fork 
+    if (kill?) then (yes)
 			if (putBomb) then (yes)
-			if (moveOutofRange) then (True)
-				
-			else (False)
-				:die;
-			endif
+			  if (moveOutofRange) then (True)
+				else (False)
+				  :die;
+			  endif
 			else (no)
 				:moveTowardsDiferentDirection;
-			endif
-		fork again
-			if (getHit) then (yes)
+    endif
+      elseif (getHit) then (yes)
 				:die;
 			else (no)
-			
-			endif		
-		end fork
+    endif
+
+	
 end fork
 	:encountersNextLevelBlock;
 	:PassLevel;
