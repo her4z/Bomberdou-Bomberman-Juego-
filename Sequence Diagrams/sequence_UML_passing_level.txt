@@ -1,5 +1,5 @@
 @startuml
-title TNTMan breaks block
+title TNTMan passing level
 autonumber
 Activate TNTMan
 TNTMan ->> BExit: touch()
