@@ -3,4 +3,4 @@ class TNTMan(Entity):
         TNTMan.__init__(self)
         self.buff = False
     
-    def deployBomb
+    def deployBomb():
