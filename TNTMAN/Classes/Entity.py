@@ -1,6 +1,5 @@
 class Entity():
     def __init__ (self):
-        Entity.__init__(self)
         self.hitbox = Cells[2]
         self.live = True
         self.lifes = 0

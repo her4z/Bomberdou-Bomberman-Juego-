@@ -5,6 +5,7 @@ import bomberman
 
 class View():
     def __init__(self, dimentions, map):
+        pygame.init()
         self.map = map
         self.dimentions = dimentions
         self.background = None
