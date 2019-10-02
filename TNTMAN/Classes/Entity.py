@@ -6,17 +6,17 @@ class Entity():
         self.position = Position
         self.speed = 0.00
 
-    def getSpeed():
+    def get_speed():
         return self.speed
-    def setSpeed(speed):
+    def set_speed(speed):
         self.speed = speed
-    def getLive():
+    def get_live():
         return self.live
     def die():
         self.live = False
-    def getLifes():
+    def get_lifes():
         return self.lifes
-    def setLifes(lifes):
+    def set_lifes(lifes):
         self.lifes = lifes
 
 

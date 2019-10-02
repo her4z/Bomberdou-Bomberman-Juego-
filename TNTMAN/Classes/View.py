@@ -20,3 +20,9 @@ class View():
         self.screen.blit(self.background, [0, 0])
 
     def load_image_tntman(self, sprite, position):
+        self.tntman = pygame.image.load(sprite)
+        self.pos_tntman = position
+        self.screen.blit(self.tntman, self.map.get_position_tntman())
+
+    def reload_tntman(self):
+        self.screen.blit(self.tntman, self.map.get_position_tntman())
