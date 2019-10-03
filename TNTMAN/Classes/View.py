@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-import bomberman
+import TNTMan
 
 
 class View():

@@ -1,12 +1,15 @@
-class TNTMan(Entity):
-    def __init__(self, ):
-        super().__init__(self)
+import Entity
+
+
+class TNTMan(Entity.Entity):
+    def __init__(self, el_nombre):
+        super().__init__()
         self.buff = False
-        self.name = None
+        self.name = el_nombre
         self.move_to = None
         self.position = Position
 
-    def deploy_bomb():
+    def deploy_bomb(self):
         pass
 
     def move(self, direction, is_valid):

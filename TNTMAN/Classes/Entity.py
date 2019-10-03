@@ -1,6 +1,7 @@
+import Cells
 class Entity():
     def __init__ (self):
-        self.hitbox = Cells[2]
+        self.hitbox = Cells.Cells(1,1)
         self.live = True
         self.lifes = 0
         self.position = Position
