@@ -1,6 +1,6 @@
-import View
 import Map
 import pygame
+import View
 
 
 class Driver:
@@ -25,5 +25,6 @@ class Driver:
     def load_imgs(self):
         self.view.load_background('background.jpg')
         self.view.load_image_tntman('tmsprite.png', (2, 2))
+
 if __name__ == "__main__":
     driver = Driver()

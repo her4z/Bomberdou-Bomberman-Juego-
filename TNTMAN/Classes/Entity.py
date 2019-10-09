@@ -1,7 +1,9 @@
 import Cells
+
+
 class Entity():
-    def __init__ (self):
-        self.hitbox = Cells.Cells(1,1)
+    def __init__():
+        self.hitbox = Cells.Cells(1, 1)
         self.live = True
         self.lifes = 0
         self.position = Position
@@ -9,16 +11,18 @@ class Entity():
 
     def get_speed():
         return self.speed
+
     def set_speed(speed):
         self.speed = speed
+
     def get_live():
         return self.live
+
     def die():
         self.live = False
+
     def get_lifes():
         return self.lifes
+
     def set_lifes(lifes):
         self.lifes = lifes
-
-
-    

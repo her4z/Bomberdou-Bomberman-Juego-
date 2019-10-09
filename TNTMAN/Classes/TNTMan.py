@@ -2,7 +2,7 @@ import Entity
 
 
 class TNTMan(Entity.Entity):
-    def __init__(self, el_nombre):
+    def __init__(el_nombre):
         super().__init__()
         self.buff = False
         self.name = el_nombre
