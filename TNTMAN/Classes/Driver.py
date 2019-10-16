@@ -9,10 +9,8 @@ class Driver:
         #self.map = Map.Map("Fede", self.dimentions)
         self.view = pygame.display.set_mode(self.dimentions)
         self.caption = pygame.display.set_caption("TNTMan")
-        # self.background = pygame.image.load("background.jpg")
-        # self.view.blit(self.background, (0, 0))
-        self.bUnbreakable = pygame.image.load("bUnbreakable32x32.png")
-        self.view.blit(self.bUnbreakable, (17, 29))
+        self.bUnbreakable = pygame.image.load("background.jpg")
+        self.view.blit(self.bUnbreakable, (0, 0))
         self.main_loop()
 
     def main_loop(self):
