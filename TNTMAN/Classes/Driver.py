@@ -9,24 +9,31 @@ class Driver:
         #self.map = Map.Map("Fede", self.dimentions)
         self.view = pygame.display.set_mode(self.dimentions)
         self.caption = pygame.display.set_caption("TNTMan")
-        pygame.image.load("background.jpg")
+        # self.background = pygame.image.load("background.jpg")
+        # self.view.blit(self.background, (0, 0))
+        self.bUnbreakable = pygame.image.load("bUnbreakable32x32.png")
+        self.view.blit(self.bUnbreakable, (17, 29))
         self.main_loop()
 
     def main_loop(self):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    sys.exit()
+                    pygame.quit()
+                    quit()
                 if event.type == pygame.KEYDOWN:
                     self.map.move_tm(CONTROLS[str(event.key)])
                     self.view.reload_background()
                     self.view.reload_tntman()
                 # self.view.fill([255, 255, 255])
                 pygame.display.flip()
-       
+    
+    
         
-        
-        #self.view.load_image_tntman('tmsprite.png', (2, 2))
+    def block_load(self):    
+       self.bUnbreakable = pygame.image.load("bUnbreakable32x32.png")
+       self.view.blit(self.bUnbreakable, (17, 29))
+
 
 if __name__ == "__main__":
     driver = Driver()
