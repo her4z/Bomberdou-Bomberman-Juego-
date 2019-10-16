@@ -10,7 +10,7 @@ class View():
     def __init__(self):
         pygame.init()
         # self.map = map
-        self.dimentions = (640, 480)
+        self.dimentions = (1024, 480)
         self.background = None
         self.screen = pygame.display.set_mode(self.dimentions)
         self.caption = pygame.display.set_caption("TNTMan")
@@ -37,4 +37,4 @@ class View():
     def reload_tntman(self):
         self.screen.blit(self.tntman, self.map.get_position_tntman())
 
-lasenioravista = View()
+laseñoravista = View()
