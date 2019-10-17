@@ -6,7 +6,7 @@ import Background
 class Driver:
     def __init__(self):
         self.dimentions = (800, 600)
-        #self.map = Map.Map("Fede", self.dimentions)
+        self.map = Map.Map(self.dimentions)
         self.view = pygame.display.set_mode(self.dimentions)
         self.caption = pygame.display.set_caption("TNTMan")
         self.bUnbreakable = pygame.image.load("background.jpg")
@@ -25,12 +25,10 @@ class Driver:
                     self.view.reload_tntman()
                 # self.view.fill([255, 255, 255])
                 pygame.display.flip()
-    
-    
         
-    def block_load(self):    
-       self.bUnbreakable = pygame.image.load("bUnbreakable32x32.png")
-       self.view.blit(self.bUnbreakable, (17, 29))
+    def block_load(self):  
+        self.bUnbreakable = pygame.image.load("bUnbreakable32x32.png")
+        self.view.blit(self.bUnbreakable, (17, 29))
 
 
 if __name__ == "__main__":
