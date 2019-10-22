@@ -14,5 +14,5 @@ class Map():
         return self.TNTMan.get_position()
 
     def move_tm(self, direction):
-        self.TNTMan.move_to(direction)
+        self.TNTMan.move_to(direction, 1)
         

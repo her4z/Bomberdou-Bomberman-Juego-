@@ -7,7 +7,7 @@ class TNTMan(Entity.Entity):
         self.name= name
         self.step_size = 4 # velocidad
 
-    def move(self,direction, is_valid): #es_valida es 0 o 1. Si es valida, es 1
+    def move_to(self,direction, is_valid): #es_valida es 0 o 1. Si es valida, es 1
         print('is_valid',is_valid)
         for index,item in enumerate(self.actual_pos):
             self.actual_pos[index] = item+is_valid*self.step_size*direction[index]
