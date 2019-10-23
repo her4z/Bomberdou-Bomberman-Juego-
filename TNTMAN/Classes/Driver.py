@@ -1,23 +1,30 @@
+import sys,os
 import Map
 import pygame
 import Background
+import View
+sys.path.append(os.path.dirname(__file__))
+
+CONTROLS = {'273': [0, -1], '274': [0, 1], '275': [1, 0], '276': [-1, 0]}
 
 
 class Driver:
     def __init__(self):
         self.dimentions = (800, 600)
-        #self.map = Map.Map("Fede", self.dimentions)
-        self.view = pygame.display.set_mode(self.dimentions)
-        self.caption = pygame.display.set_caption("TNTMan")
-        self.bUnbreakable = pygame.image.load("background.jpg")
-        self.view.blit(self.bUnbreakable, (0, 0))
+        self.map = Map.Map('elnombredeljugador', self.dimentions)
+        self.view = View.View(self.dimentions, self.map)
+        self.view.load_background('background.jpg')
+        self.view.load_image_tntman('../src/pinguino-frente.png')
         self.main_loop()
+
+        
 
     def main_loop(self):
         while True:
             for event in pygame.event.get():
+                print(event)
+
                 if event.type == pygame.QUIT:
-                    pygame.quit()
                     quit()
                 if event.type == pygame.KEYDOWN:
                     self.map.move_tm(CONTROLS[str(event.key)])
@@ -25,12 +32,6 @@ class Driver:
                     self.view.reload_tntman()
                 # self.view.fill([255, 255, 255])
                 pygame.display.flip()
-    
-    
-        
-    def block_load(self):    
-       self.bUnbreakable = pygame.image.load("bUnbreakable32x32.png")
-       self.view.blit(self.bUnbreakable, (17, 29))
 
 
 if __name__ == "__main__":
