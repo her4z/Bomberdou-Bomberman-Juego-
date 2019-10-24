@@ -1,7 +1,6 @@
 import sys,os
 import Map
 import pygame
-import Background
 import View
 sys.path.append(os.path.dirname(__file__))
 
@@ -13,7 +12,7 @@ class Driver:
         self.dimentions = (800, 600)
         self.map = Map.Map('elnombredeljugador', self.dimentions)
         self.view = View.View(self.dimentions, self.map)
-        self.view.load_background('background.jpg')
+        self.view.load_background('../src/background.png')
         self.view.load_image_tntman('../src/pinguino-frente.png')
         self.main_loop()
 
@@ -27,10 +26,13 @@ class Driver:
                 if event.type == pygame.QUIT:
                     quit()
                 if event.type == pygame.KEYDOWN:
-                    self.map.move_tm(CONTROLS[str(event.key)])
-                    self.view.reload_background()
-                    self.view.reload_tntman()
+                    try:
+                        self.map.move_tm(CONTROLS[str(event.key)])
+                        self.view.reload_background()
+                        self.view.reload_tntman()
                 # self.view.fill([255, 255, 255])
+                    except KeyError:
+                        pass
                 pygame.display.flip()
 
 
