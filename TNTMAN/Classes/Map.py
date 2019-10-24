@@ -18,6 +18,5 @@ class Map():
 
     def move_tm(self, direction):
         self.TNTMan.move_to(direction, 1)
-        if direction == [1, 0]:
-            self.view.load_image_tntman('../src/pinguino-der.png')
+
            

@@ -13,10 +13,8 @@ class Driver:
         self.map = Map.Map('elnombredeljugador', self.dimentions)
         self.view = View.View(self.dimentions, self.map)
         self.view.load_background('../src/background.png')
-        self.view.load_image_tntman('../src/pinguino-frente.png')
+        self.view.load_sprite_tntman("")
         self.main_loop()
-
-        
 
     def main_loop(self):
         while True:
@@ -28,13 +26,12 @@ class Driver:
                 if event.type == pygame.KEYDOWN:
                     try:
                         self.map.move_tm(CONTROLS[str(event.key)])
-                        self.view.reload_background()
-                        self.view.reload_tntman()
-                # self.view.fill([255, 255, 255])
+                        self.view.cambiar_sprite_tntman(str(event.key))
                     except KeyError:
                         pass
+                self.view.reload_background()
+                self.view.reload_tntman()
                 pygame.display.flip()
-
 
 if __name__ == "__main__":
     driver = Driver()
