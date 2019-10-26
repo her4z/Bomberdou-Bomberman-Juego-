@@ -18,5 +18,5 @@ class Map():
 
     def move_tm(self, direction):
         self.TNTMan.move_to(direction, 1)
-
+    
            

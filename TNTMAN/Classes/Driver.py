@@ -27,6 +27,7 @@ class Driver:
                     try:
                         self.map.move_tm(CONTROLS[str(event.key)])
                         self.view.cambiar_sprite_tntman(str(event.key))
+                        self.
                     except KeyError:
                         pass
                 self.view.reload_background()

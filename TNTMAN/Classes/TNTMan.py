@@ -26,3 +26,6 @@ class TNTMan(Entity.Entity):
 
     def get_position(self):
         return self.actual_pos
+    
+
+        
