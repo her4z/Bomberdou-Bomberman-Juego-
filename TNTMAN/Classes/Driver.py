@@ -12,6 +12,7 @@ class Driver:
         self.dimentions = (800, 600)
         self.map = Map.Map('elnombredeljugador', self.dimentions)
         self.view = View.View(self.dimentions, self.map)
+        self.view_rect = self.view.screen.get_rect()
         self.view.load_background('../src/background.png')
         self.view.load_sprite_tntman("")
         self.main_loop()
@@ -26,8 +27,8 @@ class Driver:
                 if event.type == pygame.KEYDOWN:
                     try:
                         self.map.move_tm(CONTROLS[str(event.key)])
+                        self.map.is_position_valid(str(event.key))
                         self.view.cambiar_sprite_tntman(str(event.key))
-                        self.
                     except KeyError:
                         pass
                 self.view.reload_background()

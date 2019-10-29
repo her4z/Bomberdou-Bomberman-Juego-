@@ -11,6 +11,10 @@ class TNTMan(Entity.Entity):
     def move_to(self, direction, is_valid):  # is_valid is 0 o 1. If valid, 1
         print('is_valid', is_valid)
         for index, item in enumerate(self.actual_pos):
+            if(is_valid == 1):
+                self.step_size = 32
+            else:
+                self.step_size = 0
             self.actual_pos[index] = (item + is_valid * self.step_size *
                                       direction[index])
 
@@ -21,8 +25,9 @@ class TNTMan(Entity.Entity):
         print('direction', direction)
         aux_list = []
         for index, item in enumerate(self.actual_pos):
-            aux_list.append(item + self.step_size * direction[index])
+            aux_list = (item + self.step_size * int(direction[index]))
         return aux_list
+        
 
     def get_position(self):
         return self.actual_pos

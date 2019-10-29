@@ -11,7 +11,6 @@ sys.path.append(os.path.dirname(__file__))
 class View():
     def __init__(self, dimentions, elmapaquerecibecomoparametro):
         pygame.init()
-        # self.map = map
         self.dimentions = dimentions
         self.background = None
         self.screen = pygame.display.set_mode(self.dimentions)
