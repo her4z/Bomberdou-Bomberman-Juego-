@@ -15,11 +15,13 @@ class Map():
 
     def is_position_valid(self, direction):
         new_position = self.TNTMan.get_new_possible_position(direction)
-        if(new_position(0) < 32 or new_position(0) > 736
-           or new_position(1) < 32 or new_position(1) > 544):
-            self.TNTMan.move_to(direction, 0)
-
-        
+        xpos = new_position[0]
+        ypos = new_position[1] 
+        print("next_pos", new_position)
+        if(xpos > 32 and xpos < 768 and ypos > 30 and ypos < 576):
+            self.move_tm(direction)
+        else:
+            pass
 
     def get_position_tntman(self):
         return self.TNTMan.get_position()
