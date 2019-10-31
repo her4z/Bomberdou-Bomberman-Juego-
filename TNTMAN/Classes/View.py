@@ -22,6 +22,7 @@ class View():
                             pygame.image.load("../src/pinguino/pinguino1.png"),
                             pygame.image.load("../src/pinguino/pinguino2.png"),
                             pygame.image.load("../src/pinguino/pinguino3.png"),
+                            pygame.image.load("../src/pinguino/pinguino4.png")
                             ]
 
     def load_background(self, background_img):
@@ -41,6 +42,8 @@ class View():
             self.tntman = self.tntman_sprites[0]
         elif direction == '276':
             self.tntman = self.tntman_sprites[2]
+        elif direction  == '273':
+            self.tntman = self.tntman_sprites[3]
 
     def reload_tntman(self):
         self.screen.blit(self.tntman, self.map.get_position_tntman())
