@@ -42,7 +42,7 @@ class View():
             self.tntman = self.tntman_sprites[0]
         elif direction == '276':
             self.tntman = self.tntman_sprites[2]
-        elif direction  == '273':
+        elif direction == '273':
             self.tntman = self.tntman_sprites[3]
 
     def reload_tntman(self):

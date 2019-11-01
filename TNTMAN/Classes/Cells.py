@@ -1,3 +1,4 @@
 class Cells():
-    def __init__(size):
-        self.size = (0,0)
+    def __init__(self, size):
+        self.size = (32, 32)
+        self.content = None

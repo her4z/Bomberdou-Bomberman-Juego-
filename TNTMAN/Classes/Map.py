@@ -1,7 +1,10 @@
 import TNTMan
 import View
-import sys, os
+import sys
+import os
+import Cells
 sys.path.append(os.path.dirname(__file__))
+
 
 class Map():
     def __init__(self, player_name, dimentions):
@@ -9,9 +12,7 @@ class Map():
         self.dimentions = dimentions
         self.TNTMan = TNTMan.TNTMan(self.name)
         self.view = View.View(self.dimentions, self.name)
-        black = (0, 0, 0)
-        rectangle_stuff = (32, 32, 736, 544)
-        #self.rectangle = pygame.draw.rect(self.view.screen, black, , 1)
+        self.map = self.build_map()
 
     def is_position_valid(self, direction):
         new_position = self.TNTMan.get_new_possible_position(direction)
@@ -29,5 +30,10 @@ class Map():
     def move_tm(self, direction):
         self.TNTMan.move_to(direction, 1)
     
-
-           
+    def build_map(dimentions):
+        map_list = []
+        for y_rows in range(18):  # 0 a 18 filas (19)
+            for x_columns in range(24):  # 0 a 24 filas (25)
+                cell = Cells(y_rows, x_columns)
+                map_list.append(Cell)
+            print("map_list", map_list)
