@@ -12,7 +12,6 @@ class Driver:
         self.dimentions = (800, 600)
         self.map = Map.Map('elnombredeljugador', self.dimentions)
         self.view = View.View(self.dimentions, self.map)
-        self.view_rect = self.view.screen.get_rect()
         self.view.load_background('../src/background.png')
         self.view.load_sprite_tntman("")
         self.main_loop()
