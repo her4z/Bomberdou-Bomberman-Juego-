@@ -14,9 +14,10 @@ class Map():
 
         def build_map_array(self):
             map_array = []
-            for x in range (0, 26):
-                for y in range (0, 20):
+            for x in range (0, 25):
+                for y in range (0, 19):
                     map_array.append(Cells.Cells([x, y]))
+            
             self.map_array = map_array
         build_map_array(self)
 

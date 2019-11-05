@@ -30,8 +30,8 @@ class View():
             map_array_view = []
             cell_id_dict = {}
             i = -1
-            for x in range(0, 26):
-                for y in range(0,20):
+            for x in range(0, 25):
+                for y in range(0, 19):
                     i = i + 1
                     cell_id_dict[x, y] = i
                     map_array_view.append([(self.map.map_array[i].position)[0] * 32, (self.map.map_array[i].position)[1] *32])
