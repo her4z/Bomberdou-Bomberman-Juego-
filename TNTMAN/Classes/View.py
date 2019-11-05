@@ -23,7 +23,8 @@ class View():
                             pygame.image.load("../src/pinguino/pinguino1.png"),
                             pygame.image.load("../src/pinguino/pinguino2.png"),
                             pygame.image.load("../src/pinguino/pinguino3.png"),
-                            pygame.image.load("../src/pinguino/pinguino4.png")
+                            pygame.image.load("../src/pinguino/pinguino4.png"),
+                            pygame.image.load("../src/pinguino/pinguino5.png")
                             ]
 
         def build_map_array_view(self):
@@ -59,7 +60,7 @@ class View():
         elif direction == '276':
             self.tntman = self.tntman_sprites[2]
         elif direction == '273':
-            self.tntman = self.tntman_sprites[3]
+            self.tntman = self.tntman_sprites[4]
 
     def reload_tntman(self):
         self.screen.blit(self.tntman, self.search_in_map_array_view(self.map.get_position_tntman()))
