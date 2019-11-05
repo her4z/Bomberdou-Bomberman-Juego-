@@ -1,7 +1,5 @@
 map_array = []
-for x in range (0, 26):
-    for y in range (0, 20):
-        map_array.append([x, y])
-lim = map_array.count()
-for i in range(0, lim):
-    print(map_array[i])
+map_array.append([1, 2] )
+(map_array[0])[0] = (map_array[0])[0] * 32
+(map_array[0])[1] = (map_array[0])[1] * 32
+print(map_array[0])

@@ -17,6 +17,7 @@ class View():
         self.caption = pygame.display.set_caption("TNTMan")
         pygame.display.flip()
         self.map = elmapaquerecibecomoparametro
+        self.map_array_view = None
         self.tntman = None
         self.tntman_sprites = [
                             pygame.image.load("../src/pinguino/pinguino1.png"),
@@ -24,6 +25,18 @@ class View():
                             pygame.image.load("../src/pinguino/pinguino3.png"),
                             pygame.image.load("../src/pinguino/pinguino4.png")
                             ]
+
+        def build_map_array_view(self):
+            map_array_view = []
+            i = -1
+            for x in range(0, 26):
+                for y in range(0,20):
+                    i = i + 1
+                    map_array_view.append([(self.map[i].position)[0] * 32, (self.map[i].position)[1] *32])
+            self.map_array_view = map_array_view
+        build_map_array_view(self)
+
+
 
     def load_background(self, background_img):
         self.background = pygame.image.load(background_img)

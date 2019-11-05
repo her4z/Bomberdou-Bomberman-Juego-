@@ -6,22 +6,21 @@ class TNTMan(Entity.Entity):
     def __init__(self, name, pos=[34, 32]):
         self.actual_pos = pos
         self.name = name
-        self.step_size = 32  # Velocity
+        self.step_size = 16  # Velocity
 
     def move_to(self, direction, is_valid):  # is_valid is 0 o 1. If valid, 1
         print('is_valid: ', is_valid)
         
         if(is_valid == 1):
-            self.step_size = 32
             print("step_size", self.step_size)
         if(is_valid == 0):
-            #self.step_size = 0
+            self.step_size = 0
             pass
             print("setp_size", self.step_size)
         for index, item in enumerate(self.actual_pos):
             self.actual_pos[index] = (item + is_valid * self.step_size *
                                       direction[index])
-
+        #self.actual_pos = view.
     def get_stepsize(self):
         return self.step_size
 

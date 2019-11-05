@@ -11,7 +11,6 @@ class Map():
         self.dimentions = dimentions
         self.map_array = None
         self.TNTMan = TNTMan.TNTMan(self.name)
-        self.view = View.View(self.dimentions, self.name)
 
         def build_map_array(self):
             map_array = []
@@ -19,8 +18,9 @@ class Map():
                 for y in range (0, 20):
                     map_array.append(Cells.Cells([x, y]))
             self.map_array = map_array
-            print(map_array[0].position)
         build_map_array(self)
+        self.view = View.View(self.dimentions, self.map_array)
+
 
     def is_position_valid(self, direction):
         new_position = self.TNTMan.get_new_possible_position(direction)
