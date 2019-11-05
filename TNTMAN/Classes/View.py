@@ -4,7 +4,6 @@ import os
 from pygame.locals import *
 import TNTMan as pinguman
 import Driver
-import Map
 sys.path.append(os.path.dirname(__file__))
 
 
@@ -18,6 +17,7 @@ class View():
         pygame.display.flip()
         self.map = elmapaquerecibecomoparametro
         self.map_array_view = None
+        self.cell_id_dict = None
         self.tntman = None
         self.tntman_sprites = [
                             pygame.image.load("../src/pinguino/pinguino1.png"),
@@ -28,12 +28,15 @@ class View():
 
         def build_map_array_view(self):
             map_array_view = []
+            cell_id_dict = {}
             i = -1
             for x in range(0, 26):
                 for y in range(0,20):
                     i = i + 1
-                    map_array_view.append([(self.map[i].position)[0] * 32, (self.map[i].position)[1] *32])
+                    cell_id_dict[x, y] = i
+                    map_array_view.append([(self.map.map_array[i].position)[0] * 32, (self.map.map_array[i].position)[1] *32])
             self.map_array_view = map_array_view
+            self.cell_id_dict = cell_id_dict
         build_map_array_view(self)
 
 
@@ -59,4 +62,10 @@ class View():
             self.tntman = self.tntman_sprites[3]
 
     def reload_tntman(self):
-        self.screen.blit(self.tntman, self.map.get_position_tntman())
+        self.screen.blit(self.tntman, self.search_in_map_array_view(self.map.get_position_tntman()))
+    
+    def search_in_map_array_view(self, cell):
+        cell_id = 0
+        cell_id = self.cell_id_dict[cell[0], cell[1]]
+        return(self.map_array_view[cell_id])
+

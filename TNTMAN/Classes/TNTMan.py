@@ -3,24 +3,25 @@ import View
 
 
 class TNTMan(Entity.Entity):
-    def __init__(self, name, pos=[34, 32]):
+    def __init__(self, name, pos=[1, 1]):
         self.actual_pos = pos
         self.name = name
         self.step_size = 16  # Velocity
 
     def move_to(self, direction, is_valid):  # is_valid is 0 o 1. If valid, 1
-        print('is_valid: ', is_valid)
+        #print('is_valid: ', is_valid)
         
-        if(is_valid == 1):
-            print("step_size", self.step_size)
-        if(is_valid == 0):
-            self.step_size = 0
-            pass
-            print("setp_size", self.step_size)
-        for index, item in enumerate(self.actual_pos):
-            self.actual_pos[index] = (item + is_valid * self.step_size *
-                                      direction[index])
-        #self.actual_pos = view.
+        #if(is_valid == 1):
+         #   print("step_size", self.step_size)
+        #if(is_valid == 0):
+         #   self.step_size = 0
+          #  pass
+           # print("setp_size", self.step_size)
+        #for index, item in enumerate(self.actual_pos):
+         #   self.actual_pos[index] = (item + is_valid * self.step_size *
+          #                            direction[index])
+        self.actual_pos[0] = self.actual_pos[0] + direction[0]
+        self.actual_pos[1] = self.actual_pos[1] + direction[1]
     def get_stepsize(self):
         return self.step_size
 

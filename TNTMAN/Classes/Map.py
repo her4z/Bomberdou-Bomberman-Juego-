@@ -19,7 +19,6 @@ class Map():
                     map_array.append(Cells.Cells([x, y]))
             self.map_array = map_array
         build_map_array(self)
-        self.view = View.View(self.dimentions, self.map_array)
 
 
     def is_position_valid(self, direction):
