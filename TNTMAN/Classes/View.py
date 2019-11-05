@@ -20,11 +20,14 @@ class View():
         self.cell_id_dict = None
         self.tntman = None
         self.tntman_sprites = [
-                            pygame.image.load("../src/pinguino/pinguino1.png"),
-                            pygame.image.load("../src/pinguino/pinguino2.png"),
-                            pygame.image.load("../src/pinguino/pinguino3.png"),
-                            pygame.image.load("../src/pinguino/pinguino4.png"),
-                            pygame.image.load("../src/pinguino/pinguino5.png")
+                        pygame.image.load(
+                            "../src/pinguino/pinguino_right.png"),
+                        pygame.image.load(
+                            "../src/pinguino/pinguino_left.png"),
+                        pygame.image.load(
+                            "../src/pinguino/pinguino_upwards.png"),
+                        pygame.image.load(
+                            "../src/pinguino/pinguino_downwards.png")
                             ]
 
         def build_map_array_view(self):
@@ -35,7 +38,8 @@ class View():
                 for y in range(0,20):
                     i = i + 1
                     cell_id_dict[x, y] = i
-                    map_array_view.append([(self.map.map_array[i].position)[0] * 32, (self.map.map_array[i].position)[1] *32])
+                    map_array_view.append([
+                                           (self.map.map_array[i].position)[0] * 32, (self.map.map_array[i].position)[1] *32])
             self.map_array_view = map_array_view
             self.cell_id_dict = cell_id_dict
         build_map_array_view(self)
@@ -50,7 +54,7 @@ class View():
         self.screen.blit(self.background, [0, 0])
 
     def load_sprite_tntman(self, sprite_file):
-        self.tntman = pygame.image.load("../src/pinguino/pinguino1.png")
+        self.tntman = pygame.image.load("../src/pinguino/pinguino_right.png")
         self.pos_tntman = self.map.get_position_tntman()
         self.screen.blit(self.tntman, self.pos_tntman)
 
@@ -58,9 +62,11 @@ class View():
         if direction == '275':
             self.tntman = self.tntman_sprites[0]
         elif direction == '276':
-            self.tntman = self.tntman_sprites[2]
+            self.tntman = self.tntman_sprites[1]
         elif direction == '273':
-            self.tntman = self.tntman_sprites[4]
+            self.tntman = self.tntman_sprites[2]
+        elif direction == '274':
+            self.tntman = self.tntman_sprites[3]
 
     def reload_tntman(self):
         self.screen.blit(self.tntman, self.search_in_map_array_view(self.map.get_position_tntman()))
