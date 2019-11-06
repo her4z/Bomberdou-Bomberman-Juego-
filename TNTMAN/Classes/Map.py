@@ -1,7 +1,9 @@
 import TNTMan
 import View
-import sys, os
+import sys
+import os
 import Cells
+import Blocks
 sys.path.append(os.path.dirname(__file__))
 
 
@@ -9,28 +11,42 @@ class Map():
     def __init__(self, player_name, dimentions):
         self.name = player_name
         self.dimentions = dimentions
-        self.map_array = None
+        self.map_array = []
         self.TNTMan = TNTMan.TNTMan(self.name)
 
         def build_map_array(self):
             map_array = []
-            for x in range (0, 25):
-                for y in range (0, 19):
-                    map_array.append(Cells.Cells([x, y]))
-            
+            border_list = []
+            for a in range(0, 24):
+                border_list.append([a, 0])
+                border_list.append([a, 18])
+            for b in range(1, 17):
+                border_list.append([0, b])
+                border_list.append([24, b])
+            for x in range(0, 25):
+                for y in range(0, 19):
+                    if [x, y] in border_list:
+                        map_array.append(Cells.Cells([x, y], Blocks.BUnbreakable()))
+                    else:
+                        map_array.append(Cells.Cells([x, y], None))
+
             self.map_array = map_array
         build_map_array(self)
 
-
     def is_position_valid(self, direction):
         new_position = self.TNTMan.get_new_possible_position(direction)
-        xpos = new_position[0]
-        ypos = new_position[1] 
-        print("next_pos", new_position)
-        if(xpos > 32 and xpos < 768 and ypos > 30 and ypos < 576):
-            self.move_tm(direction)
-        else:
-            pass
+        for i in range(len(self.map_array)):
+            if self.map_array[i].position == new_position:
+                if isinstance(self.map_array[i].content, Blocks.Blocks()):
+                    return False
+        return True
+        #xpos = new_position[0]
+        #ypos = new_position[1] 
+        #print("next_pos", new_position)
+        #if(xpos > 32 and xpos < 768 and ypos > 30 and ypos < 576):
+            #self.move_tm(direction)
+        #else:
+            #pass
 
     def get_position_tntman(self):
         return self.TNTMan.get_position()
