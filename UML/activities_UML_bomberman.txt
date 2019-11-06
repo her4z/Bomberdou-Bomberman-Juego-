@@ -6,18 +6,6 @@ start
 	:move;
 	:findSomething;
 	fork
-		:buff;
-		
-  if (moreSpeed) then (yes)
-      :addSpeed;
-		elseif (invulnerability) then (yes)
-      :beInvulnerable;
-		elseif (moreDetDamage) then (yes)
-      :addDetDmg;
-		elseif (moreDetRange) then (yes)
-      :addDetRange;
-		endif
-	fork again
 		:obstacle;
 		if (break?) then (yes)
 			:putBomb;
