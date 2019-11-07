@@ -20,6 +20,7 @@ class View():
         self.cell_id_dict = None
         self.tntman = None
         self.BUnbreakable_sprite = pygame.image.load("../src/bUnbreakable32x32.png")
+        self.bomb_sprite = pygame.image.load("../src/keybomb.png")
         self.tntman_sprites = [
                         pygame.image.load(
                             "../src/pinguino/pinguino_right.png"),
@@ -45,6 +46,10 @@ class View():
             self.cell_id_dict = cell_id_dict
         build_map_array_view(self)
 
+    def load_BUnbreakable_sprite(self, pos):
+        pos_block_pixels = self.search_in_map_array_view(pos)
+        self.screen.blit(self.BUnbreakable_sprite, pos_block_pixels)
+
     def load_background(self, background_img):
         self.background = pygame.image.load(background_img)
         self.screen.blit(self.background, [0, 0])
@@ -54,8 +59,20 @@ class View():
 
     def load_sprite_tntman(self, sprite_file):
         self.tntman = pygame.image.load("../src/pinguino/pinguino_right.png")
-        self.pos_tntman = self.map.get_position_tntman()
-        self.screen.blit(self.tntman, self.pos_tntman)
+        pos_tntman = self.map.get_position_tntman()
+        self.screen.blit(self.tntman, pos_tntman)
+    
+    def load_sprite_bomb(self, key):
+        if key == 32:
+            pos_tntman = self.map.get_position_tntman()
+            pos_tntman_pixels = self.search_in_map_array_view(pos_tntman)
+            self.screen.blit(self.bomb_sprite, pos_tntman_pixels)
+    
+    def reload_bomb(self):
+        pos_tntman = self.map.get_position_tntman()
+        pos_tntman_pixels = self.search_in_map_array_view(pos_tntman)
+        self.screen.blit(self.bomb_sprite, pos_tntman_pixels)
+        
 
     def cambiar_sprite_tntman(self, direction):
         if direction == '275':
