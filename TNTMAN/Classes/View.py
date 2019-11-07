@@ -69,9 +69,8 @@ class View():
 
     def reload_tntman(self):
         self.screen.blit(self.tntman, self.search_in_map_array_view(self.map.get_position_tntman()))
-    
+
     def search_in_map_array_view(self, cell):
         cell_id = 0
         cell_id = self.cell_id_dict[cell[0], cell[1]]
         return(self.map_array_view[cell_id])
-

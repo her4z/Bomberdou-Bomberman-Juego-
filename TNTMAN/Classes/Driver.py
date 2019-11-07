@@ -31,6 +31,7 @@ class Driver:
                         self.view.cambiar_sprite_tntman(str(event.key))
                     except KeyError:
                         pass
+                    
                 self.view.reload_background()
                 self.view.reload_tntman()
                 pygame.display.flip()

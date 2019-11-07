@@ -19,9 +19,6 @@ class TNTMan(Entity.Entity):
         aux_list = [1, 1]
         aux_list[0] = self.actual_pos[0] + direction[0]
         aux_list[1] = self.actual_pos[1] + direction[1]
-
-        #for index, item in enumerate(self.actual_pos):  # como una posicion es una lista [x,y], este for la recorre.
-            #aux_list.append(item + self.step_size * int(direction[index]))
         return aux_list
 
     def get_position(self):

@@ -40,8 +40,6 @@ class Map():
                 if isinstance(self.map_array[i].content, Blocks.Blocks):
                     raise KeyError
 
-
-
     def get_position_tntman(self):
         return self.TNTMan.get_position()
 
