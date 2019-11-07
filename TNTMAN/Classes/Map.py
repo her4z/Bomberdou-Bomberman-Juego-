@@ -2,6 +2,7 @@ import TNTMan
 import View
 import sys, os
 import Cells
+import Bomb
 sys.path.append(os.path.dirname(__file__))
 
 
@@ -36,3 +37,6 @@ class Map():
 
     def move_tm(self, direction):
         self.TNTMan.move_to(direction, 1)
+    
+    def place_bomb(self):
+        self.Bomb = Bomb.Bomb()

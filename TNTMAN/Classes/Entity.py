@@ -2,27 +2,20 @@ import Cells
 
 
 class Entity():
-    def __init__():
+    def __init__(self):
         self.hitbox = Cells.Cells(1, 1)
         self.live = True
-        self.lifes = 0
         self.position = Position
-        self.speed = 0.00
+        self.speed = 32
 
-    def get_speed():
+    def get_speed(self):
         return self.speed
 
-    def set_speed(speed):
+    def set_speed(self, speed):
         self.speed = speed
 
-    def get_live():
+    def get_live(self):
         return self.live
 
-    def die():
+    def die(self):
         self.live = False
-
-    def get_lifes():
-        return self.lifes
-
-    def set_lifes(lifes):
-        self.lifes = lifes

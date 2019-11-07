@@ -4,6 +4,7 @@ import os
 from pygame.locals import *
 import TNTMan as pinguman
 import Driver
+import Bomb
 sys.path.append(os.path.dirname(__file__))
 
 
@@ -75,4 +76,7 @@ class View():
         cell_id = 0
         cell_id = self.cell_id_dict[cell[0], cell[1]]
         return(self.map_array_view[cell_id])
+
+    def load_sprite_bomb():
+        self.Bomb = pygame.image.load("../src/")
 

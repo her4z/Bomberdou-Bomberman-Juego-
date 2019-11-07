@@ -22,6 +22,7 @@ class TNTMan(Entity.Entity):
           #                            direction[index])
         self.actual_pos[0] = self.actual_pos[0] + direction[0]
         self.actual_pos[1] = self.actual_pos[1] + direction[1]
+    
     def get_stepsize(self):
         return self.step_size
 

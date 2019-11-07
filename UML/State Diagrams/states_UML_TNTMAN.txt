@@ -5,16 +5,6 @@ state alive {
 stopped -> moving
 moving -> stopped
 
-buffed -> unbuffed
-unbuffed -> buffed
-
-state buffed{
-stopped --> movingFaster
-state invincible
-}
-movingFaster -> stopped
-
-}
 alive -> dead
 
 dead --> [*]

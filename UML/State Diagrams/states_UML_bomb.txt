@@ -1,0 +1,11 @@
+
+@startuml
+Title Bomb
+[*] --> deployed 
+state deployed {
+  state idle
+  state notBuffed
+}
+deployed -> exploded
+
+@enduml

@@ -4,7 +4,7 @@ import pygame
 import View
 sys.path.append(os.path.dirname(__file__))
 
-CONTROLS = {'273': [0, -1], '274': [0, 1], '275': [1, 0], '276': [-1, 0]}
+CONTROLS = {'273': [0, -1], '274': [0, 1], '275': [1, 0], '276': [-1, 0], '101': None}
 
 
 class Driver:
@@ -20,14 +20,15 @@ class Driver:
         while True:
             for event in pygame.event.get():
                 print(event)
-
                 if event.type == pygame.QUIT:
                     quit()
                 if event.type == pygame.KEYDOWN:
                     try:
+                        print(str(event.key))
                         self.map.move_tm(CONTROLS[str(event.key)])
                         self.map.is_position_valid(CONTROLS[str(event.key)])
                         self.view.cambiar_sprite_tntman(str(event.key))
+                        self.map.place_bomb(CONTROLS[str(event.key)])
                     except KeyError:
                         pass
                 self.view.reload_background()
@@ -36,4 +37,4 @@ class Driver:
 
 if __name__ == "__main__":
     driver = Driver()
-    Background = Background("background.jpg", [0, 0])
+    # Background = Background("background.jpg", [0, 0])
