@@ -30,6 +30,7 @@ class View():
                         pygame.image.load(
                             "../src/pinguino/pinguino_downwards.png")
                             ]
+        self.bomb_sprite = pygame.image.load("../src/keybomb.png")
 
         def build_map_array_view(self):
             map_array_view = []
@@ -40,7 +41,8 @@ class View():
                     i = i + 1
                     cell_id_dict[x, y] = i
                     map_array_view.append([
-                                           (self.map.map_array[i].position)[0] * 32, (self.map.map_array[i].position)[1] *32])
+                                           (self.map.map_array[i].position)[0] * 32, 
+                                           (self.map.map_array[i].position)[1] *32])
             self.map_array_view = map_array_view
             self.cell_id_dict = cell_id_dict
         build_map_array_view(self)
@@ -71,12 +73,22 @@ class View():
 
     def reload_tntman(self):
         self.screen.blit(self.tntman, self.search_in_map_array_view(self.map.get_position_tntman()))
-    
+
     def search_in_map_array_view(self, cell):
         cell_id = 0
         cell_id = self.cell_id_dict[cell[0], cell[1]]
         return(self.map_array_view[cell_id])
 
-    def load_sprite_bomb():
-        self.Bomb = pygame.image.load("../src/")
+    def load_sprite_bomb(self):
+        print("load_sprite_bomb activo")
+        self.pos_bomb = self.map.get_position_tntman()
+        self.screen.blit(self.bomb_sprite, self.pos_bomb)
+    
+    def reload_bomb(self):
+        self.screen.blit(self.bomb_sprite,
+                         self.search_in_map_array_view(
+                         self.map.get_position_tntman()
+                         ))
+
+
 

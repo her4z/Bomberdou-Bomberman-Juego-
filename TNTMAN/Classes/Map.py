@@ -3,6 +3,7 @@ import View
 import sys, os
 import Cells
 import Bomb
+import pygame
 sys.path.append(os.path.dirname(__file__))
 
 
@@ -38,5 +39,33 @@ class Map():
     def move_tm(self, direction):
         self.TNTMan.move_to(direction, 1)
     
-    def place_bomb(self):
-        self.Bomb = Bomb.Bomb()
+    def place_bomb(self, bomb_key):
+        if bomb_key == '101':
+            print("bomba")
+            self.Bomb = Bomb.Bomb()
+            self.bomb_pos = self.TNTMan.get_position()
+            self.bomb_state = True
+            print(self.bomb_pos)
+            self.explode_bomb()
+            return self.bomb_state
+
+    
+    def explode_bomb(self):
+        self.bomb_time = pygame.time.get_ticks()
+        self.explotion_delay = 200    
+        explotion = pygame.time.get_ticks()
+        print("explotion", explotion)
+        print ("self.bomb_time", self.bomb_time)
+        print("self.explotion_delay", self.explotion_delay)
+        if explotion - self.bomb_time <= self.explotion_delay:
+            self.bomb_time = explotion
+            print("explode_bomb correct")
+    
+        
+
+        
+    
+    
+    
+
+        
