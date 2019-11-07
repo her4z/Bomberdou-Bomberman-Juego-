@@ -4,4 +4,3 @@ class Cells():
         self.content = content
         self.position = []
         self.position = pos
-        self.test = None

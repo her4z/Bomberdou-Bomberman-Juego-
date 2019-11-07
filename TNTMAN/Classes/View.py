@@ -40,7 +40,7 @@ class View():
                     i = i + 1
                     cell_id_dict[x, y] = i
                     map_array_view.append([
-                                           (self.map.map_array[i].position)[0] * 32, (self.map.map_array[i].position)[1] *32])
+                                           (self.map.map_array[i].position)[0] * 32, (self.map.map_array[i].position)[1] * 32])
             self.map_array_view = map_array_view
             self.cell_id_dict = cell_id_dict
         build_map_array_view(self)
