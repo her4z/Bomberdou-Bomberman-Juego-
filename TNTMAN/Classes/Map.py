@@ -22,6 +22,7 @@ class Map():
                 and space indications."""
             map_array = []
             border_list = []
+            B_unbreakable_list = []
             for column in range(0, 25):  # Adds top and bottom borders.
                 border_list.append([column, 0])
                 border_list.append([column, 18])
@@ -40,13 +41,18 @@ class Map():
                         """
                         map_array.append(Cells.Cells([x, y], Blocks.Blocks()))
                     elif (x % 2) == 0 and (y % 2) == 0:
-                        map_array.append(Cells.Cells([x, y], Blocks.B_unbreakable()))
-                        #  View.View.load_BUnbreakable_sprite([x, y])
+                        map_array.append(Cells.Cells([x, y],
+                                         Blocks.B_unbreakable()))
+                        B_unbreakable_list.append([x, y])
                     else:
                         map_array.append(Cells.Cells([x, y], None))
 
             self.map_array = map_array
+            self.B_unbreakable_list = B_unbreakable_list
         build_map_array(self)
+
+    def get_B_unbreakable_list(self):
+        return self.B_unbreakable_list
 
     def is_position_valid(self, direction):
         """ Checks if a particular cell is filled with a block, if it

@@ -43,6 +43,7 @@ class Driver:
                         pass
                 self.view.reload_background()  # Reloads background
                 self.view.reload_tntman()  # Reloads character
+                self.view.load_B_unbreakable()
 
                 if self.map.is_there_any_bomb() is True:
                     self.view.reload_bomb()

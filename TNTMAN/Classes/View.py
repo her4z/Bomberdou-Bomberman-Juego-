@@ -66,11 +66,23 @@ class View():
                                             position)[1] * size_value])
             self.map_array_view = map_array_view
             self.cell_id_dict = cell_id_dict
-        build_map_array_view(self)
 
-    def load_BUnbreakable_sprite(self, pos):
-        pos_block_pixels = self.search_in_map_array_view(pos)
-        self.screen.blit(self.BUnbreakable_sprite, pos_block_pixels)
+        def load_B_unbreakable(self):
+            B_unbreakable_list = self.map.get_B_unbreakable_list()
+            for cell in range(len(B_unbreakable_list)):
+                cell_block = B_unbreakable_list[cell]
+                cell_px = self.search_in_map_array_view(cell_block)
+                self.screen.blit(self.BUnbreakable_sprite, cell_px)
+
+        build_map_array_view(self)
+        load_B_unbreakable(self)
+
+    def load_B_unbreakable(self):
+        B_unbreakable_list = self.map.get_B_unbreakable_list()
+        for cell in range(len(B_unbreakable_list)):
+            cell_block = B_unbreakable_list[cell]
+            cell_px = self.search_in_map_array_view(cell_block)
+            self.screen.blit(self.BUnbreakable_sprite, cell_px)
 
     def load_background(self, background_img):  # Loads the background image
                                                 # for the first time.
@@ -98,8 +110,8 @@ class View():
         self.screen.blit(self.bomb_sprite, pos_tntman_pixels)
 
     def reload_tntman(self):  # Reloads the character's sprites.
-        self.screen.blit(self.tntman, self.search_in_map_array_view\
-                        (self.map.get_position_tntman()))
+        self.screen.blit(self.tntman, self.search_in_map_array_view
+                         (self.map.get_position_tntman()))
 
     def change_tntman_sprite(self, direction):
         """According to which key is pressed, the Driver sends a string
