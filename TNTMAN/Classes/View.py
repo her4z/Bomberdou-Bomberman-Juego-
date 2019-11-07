@@ -19,6 +19,7 @@ class View():
         self.map_array_view = None
         self.cell_id_dict = None
         self.tntman = None
+        self.BUnbreakable_sprite = pygame.image.load("../src/bUnbreakable32x32.png")
         self.tntman_sprites = [
                         pygame.image.load(
                             "../src/pinguino/pinguino_right.png"),
@@ -39,12 +40,10 @@ class View():
                     i = i + 1
                     cell_id_dict[x, y] = i
                     map_array_view.append([
-                                           (self.map.map_array[i].position)[0] * 32, (self.map.map_array[i].position)[1] *32])
+                                           (self.map.map_array[i].position)[0] * 32, (self.map.map_array[i].position)[1] * 32])
             self.map_array_view = map_array_view
             self.cell_id_dict = cell_id_dict
         build_map_array_view(self)
-
-
 
     def load_background(self, background_img):
         self.background = pygame.image.load(background_img)

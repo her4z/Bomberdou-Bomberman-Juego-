@@ -1,4 +1,5 @@
-import sys,os
+import sys
+import os
 import Map
 import pygame
 import View
@@ -25,8 +26,8 @@ class Driver:
                     quit()
                 if event.type == pygame.KEYDOWN:
                     try:
-                        self.map.move_tm(CONTROLS[str(event.key)])
                         self.map.is_position_valid(CONTROLS[str(event.key)])
+                        self.map.move_tm(CONTROLS[str(event.key)])
                         self.view.cambiar_sprite_tntman(str(event.key))
                     except KeyError:
                         pass
