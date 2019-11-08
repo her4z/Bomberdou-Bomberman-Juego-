@@ -6,8 +6,8 @@ class Bomb():
     def __init__(self, pos):
         self.position = pos
 
-    def get_position(self):  # Getter
+    def get_position(self):  # Getter.
         return self.position
 
-    def set_position(self, pos):  # Setter
+    def set_position(self, pos):  # Setter.
         self.position = pos
