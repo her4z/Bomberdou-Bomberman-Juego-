@@ -69,7 +69,7 @@ class Map():
     def move_tm(self, direction):  # Calls TNTMan to move character.
         self.TNTMan.move_to(direction, 1)
 
-    def destroy_bomb(self): 
+    def destroy_bomb(self):
         bomb_position = self.Bomb.get_position()
         self.Bomb.set_position(None)
         self.map_array[bomb_position].content = []
@@ -92,7 +92,7 @@ class Map():
     def deploy_bomb(self, key):
         if key == 32:
             if self.is_there_any_bomb() is False:
-                #self.TNTMan.deploy_bomb()
+                # self.TNTMan.deploy_bomb()
                 tntman_pos = self.get_position_tntman()
                 for index in range(len(self.map_array)):
                     if self.map_array[index].position == tntman_pos:

@@ -20,8 +20,6 @@ class TNTMan(Entity.Entity):
         self.actual_pos[0] = self.actual_pos[0] + direction[0]
         self.actual_pos[1] = self.actual_pos[1] + direction[1]
 
-
-
     def get_new_possible_position(self, direction):
         """ This method allows to calculate which the next possible
             cell could be."""
