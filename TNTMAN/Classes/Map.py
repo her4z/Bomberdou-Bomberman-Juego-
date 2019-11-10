@@ -5,6 +5,7 @@ import os
 import Cells
 import Blocks
 import Bomb
+import random
 sys.path.append(os.path.dirname(__file__))
 
 
@@ -16,45 +17,59 @@ class Map():
         self.map_array = []  # Creates empty cell array.
         self.TNTMan = TNTMan.TNTMan()  # creates playable character.
         self.Bomb = Bomb.Bomb(None)
+        self.B_unbreakable_list = []
+        self.B_breakable_list = []
 
-        def build_map_array(self):
-            """ Bulding this array of cells helps programming movement
-                and space indications."""
-            map_array = []
-            border_list = []
-            B_unbreakable_list = []
-            for column in range(0, 25):  # Adds top and bottom borders.
-                border_list.append([column, 0])
-                border_list.append([column, 18])
-            for row in range(1, 18):  # Adds left and right borders.
-                border_list.append([0, row])
-                border_list.append([24, row])
-            for x in range(0, 25):
+    def build_map_array(self):
+        """ Bulding this array of cells helps programming movement
+            and space indications."""
+        map_array = []
+        border_list = []
+        B_unbreakable_list = []
+        B_breakable_list = []
+        for column in range(0, 25):  # Adds top and bottom borders.
+            border_list.append([column, 0])
+            border_list.append([column, 18])
+        for row in range(1, 18):  # Adds left and right borders.
+            border_list.append([0, row])
+            border_list.append([24, row])
+        for x in range(0, 25):
 
-                for y in range(0, 19):
-                    if [x, y] in border_list:
-                        """
-                            Creates array based on x and y values in
-                            for and fills them with solid blocks if the
-                            cells are inside of the 'border_list' list,
-                            making them incapable of being stepped on.
-                        """
-                        map_array.append(Cells.Cells([x, y], Blocks.Blocks()))
-                    elif (x % 2) == 0 and (y % 2) == 0:
-                        map_array.append(Cells.Cells([x, y],
-                                         Blocks.B_unbreakable()))
-                        B_unbreakable_list.append([x, y])
-                    else:
-                        map_array.append(Cells.Cells([x, y], None))
+            for y in range(0, 19):
+                if [x, y] in border_list:
+                    """
+                        Creates array based on x and y values in
+                        for and fills them with solid blocks if the
+                        cells are inside of the 'border_list' list,
+                        making them incapable of being stepped on.
+                    """
+                    map_array.append(Cells.Cells([x, y], Blocks.Blocks()))
+                elif (x % 2) == 0 and (y % 2) == 0:
+                    map_array.append(Cells.Cells([x, y],
+                                        Blocks.B_unbreakable()))
+                    B_unbreakable_list.append([x, y])
+                else:
+                    if x > 3 and y > 3:
+                        B_breakable_list.append([x, y])
+                    map_array.append(Cells.Cells([x, y], None))
 
-            self.map_array = map_array
-            self.B_unbreakable_list = B_unbreakable_list
-        build_map_array(self)
+        B_breakable_list = random.choices(B_breakable_list, k=60)
+        for cell in range(len(B_breakable_list)):
+            for cell2 in range(len(map_array)):
+                if map_array[cell2].position == B_breakable_list[cell]:
+                    map_array[cell2].content = Blocks.B_breakable()
+
+        self.map_array = map_array
+        self.B_unbreakable_list = B_unbreakable_list
+        self.B_breakable_list = B_breakable_list
+
+    def get_B_breakable_list(self):
+        return self.B_breakable_list
 
     def get_B_unbreakable_list(self):  # Getter
         return self.B_unbreakable_list
 
-    def is_position_valid(self, direction): 
+    def is_position_valid(self, direction):
         """ Checks if a particular cell is filled with a block, if it
             is, the player can't move in that direction."""
         new_position = self.TNTMan.get_new_possible_position(direction)

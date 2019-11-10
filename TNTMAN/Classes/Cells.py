@@ -4,5 +4,5 @@ class Cells():
     def __init__(self, pos, content):
         self.size = (32, 32)  # Pixel size.
         self.content = content  # Defines what other class will ocupy a cell.
-        self.position = []
+        self.position = []  # Defines the abstract position [x, y] of the cell.
         self.position = pos

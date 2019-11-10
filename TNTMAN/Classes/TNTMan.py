@@ -1,5 +1,5 @@
-import Entity
-import View
+import Entity  # Import 'Entity.py' file.
+import View  # Import 'View.py' file.
 
 
 class TNTMan(Entity.Entity):
