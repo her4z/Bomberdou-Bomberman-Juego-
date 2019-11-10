@@ -51,10 +51,10 @@ class Map():
             self.B_unbreakable_list = B_unbreakable_list
         build_map_array(self)
 
-    def get_B_unbreakable_list(self):
+    def get_B_unbreakable_list(self):  # Getter
         return self.B_unbreakable_list
 
-    def is_position_valid(self, direction):
+    def is_position_valid(self, direction): 
         """ Checks if a particular cell is filled with a block, if it
             is, the player can't move in that direction."""
         new_position = self.TNTMan.get_new_possible_position(direction)
@@ -69,21 +69,32 @@ class Map():
     def move_tm(self, direction):  # Calls TNTMan to move character.
         self.TNTMan.move_to(direction, 1)
 
-    def destroy_bomb(self):
+    def destroy_bomb(self): 
         bomb_position = self.Bomb.get_position()
         self.Bomb.set_position(None)
         self.map_array[bomb_position].content = []
 
     def is_there_any_bomb(self):
-        for i in range(len(self.map_array)):
-            if isinstance(self.map_array[i].content, Bomb.Bomb):
+        for cell in range(len(self.map_array)):
+            if isinstance(self.map_array[cell].content, Bomb.Bomb):
                 return True
-        return False
+        else:
+            return False
+
+    def get_position_bomb(self):
+        for cell in range(len(self.map_array)):
+            if isinstance(self.map_array[cell].content, Bomb.Bomb):
+                return self.map_array[cell].position
+
+    def is_bomb_deployed(self):
+        return self.TNTMan.get_bomb_deployed()
 
     def deploy_bomb(self, key):
         if key == 32:
-            tntman_pos = self.get_position_tntman()
-            for index in range(len(self.map_array)):
-                if self.map_array[index].position == tntman_pos:
-                    self.map_array[index].content = Bomb.Bomb(tntman_pos)
-                    break
+            if self.is_there_any_bomb() is False:
+                #self.TNTMan.deploy_bomb()
+                tntman_pos = self.get_position_tntman()
+                for index in range(len(self.map_array)):
+                    if self.map_array[index].position == tntman_pos:
+                        self.map_array[index].content = Bomb.Bomb(tntman_pos)
+                        break

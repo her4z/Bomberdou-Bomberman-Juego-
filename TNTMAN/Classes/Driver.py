@@ -28,6 +28,7 @@ class Driver:
             works"""
         while True:
             self.clock.tick()
+
             for event in pygame.event.get():
                 print(event)  # Prints every event that happens
                 if event.type == pygame.QUIT:

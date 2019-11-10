@@ -100,14 +100,14 @@ class View():
 
     def load_sprite_bomb(self, key):
         if key == 32:
-            pos_tntman = self.map.get_position_tntman()
-            pos_tntman_pixels = self.search_in_map_array_view(pos_tntman)
-            self.screen.blit(self.bomb_sprite, pos_tntman_pixels)
+            pos_bomb = self.map.get_position_bomb()
+            pos_bomb_pixels = self.search_in_map_array_view(pos_bomb)
+            self.screen.blit(self.bomb_sprite, pos_bomb_pixels)
 
     def reload_bomb(self):
-        pos_tntman = self.map.get_position_tntman()
-        pos_tntman_pixels = self.search_in_map_array_view(pos_tntman)
-        self.screen.blit(self.bomb_sprite, pos_tntman_pixels)
+        pos_bomb = self.map.get_position_bomb()
+        pos_bomb_pixels = self.search_in_map_array_view(pos_bomb)
+        self.screen.blit(self.bomb_sprite, pos_bomb_pixels)
 
     def reload_tntman(self):  # Reloads the character's sprites.
         self.screen.blit(self.tntman, self.search_in_map_array_view
