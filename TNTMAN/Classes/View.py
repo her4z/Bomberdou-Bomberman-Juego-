@@ -34,16 +34,14 @@ class View():
         self.BBreakable_sprite = pygame.image.load(
             "../src/bBreakable32x32.png")
         self.tntman_sprites = [
-            """ Loads every pinguino sprite, so it can be changed when the
-                direction changes."""
-            pygame.image.load(
-                "../src/pinguino/pinguino_right.png"),
-            pygame.image.load(
-                "../src/pinguino/pinguino_left.png"),
-            pygame.image.load(
-                "../src/pinguino/pinguino_upwards.png"),
-            pygame.image.load(
-                "../src/pinguino/pinguino_downwards.png")
+                            pygame.image.load(
+                                "../src/pinguino/pinguino_right.png"),
+                            pygame.image.load(
+                                "../src/pinguino/pinguino_left.png"),
+                            pygame.image.load(
+                                "../src/pinguino/pinguino_upwards.png"),
+                            pygame.image.load(
+                                "../src/pinguino/pinguino_downwards.png")
                             ]
 
         self.load_sprite_tntman("../src/pinguino/pinguino_right.png")  # Loads
