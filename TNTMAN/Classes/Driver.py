@@ -6,8 +6,8 @@ import View     # Import 'View.py' module.
 sys.path.append(os.path.dirname(__file__))
 
 CONTROLS = {'273': [0, -1], '274': [0, 1], '275': [1, 0], '276': [-1, 0]}
-""" If any of these arrows are pressed, this dictionary searches for a list,
-    which represents """
+""" If any of these arrows are pressed, this dictionary searches for a
+ list, which represents x and y values for TNTMan movement """
 
 
 class Driver:
@@ -41,16 +41,30 @@ class Driver:
                 if event.type == pygame.QUIT:
                     quit()
                 if event.type == pygame.KEYDOWN:  # If a key is pressed:
-                    try:
+                    if event.key == pygame.K_SPACE:
                         self.map.deploy_bomb(event.key)
                         self.view.load_sprite_bomb(event.key)
-                        self.view.change_tntman_sprite(str(event.key))
-                        self.map.is_position_valid(CONTROLS[str(event.key)])
-                        self.map.move_tm(CONTROLS[str(event.key)])
-                    except KeyError:
-                        """In case the key pressed isn't expected,
-                           raises an error."""
-                        pass
+                    elif event.key == pygame.K_UP:  # If that key is up
+                        if self.map.is_position_valid(CONTROLS
+                                                      [str(event.key)]):
+                            self.map.move_tm(CONTROLS[str(event.key)])
+                            self.view.change_tntman_sprite(str(event.key))
+                    elif event.key == pygame.K_DOWN:  # If that key is down
+                        if self.map.is_position_valid(CONTROLS
+                                                      [str(event.key)]):
+                            self.map.move_tm(CONTROLS[str(event.key)])
+                            self.view.change_tntman_sprite(str(event.key))
+                    elif event.key == pygame.K_RIGHT:  # If that key is right
+                        if self.map.is_position_valid(CONTROLS
+                                                      [str(event.key)]):
+                            self.map.move_tm(CONTROLS[str(event.key)])
+                            self.view.change_tntman_sprite(str(event.key))
+                    elif event.key == pygame.K_LEFT:  # If that key is left
+                        if self.map.is_position_valid(CONTROLS
+                                                      [str(event.key)]):
+                            self.map.move_tm(CONTROLS[str(event.key)])
+                            self.view.change_tntman_sprite(str(event.key))
+                    
                 self.view.reload_background()
                 self.view.reload_tntman()
                 self.view.load_blocks()
