@@ -46,7 +46,7 @@ class Map():
                     map_array.append(Cells.Cells([x, y], Blocks.Blocks()))
                 elif (x % 2) == 0 and (y % 2) == 0:
                     map_array.append(Cells.Cells([x, y],
-                                        Blocks.B_unbreakable()))
+                                                 Blocks.B_unbreakable()))
                     B_unbreakable_list.append([x, y])
                 else:
                     if x > 3 and y > 3:
