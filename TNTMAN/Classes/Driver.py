@@ -40,28 +40,28 @@ class Driver:
                 if event.type == pygame.QUIT:
                     quit()
                 if event.type == pygame.KEYDOWN:  # If a key is pressed:
+                    self.view.load_sprite_bomb(event.key)
                     if event.key == pygame.K_SPACE:
                         print("Bombo Combo")
                         self.map.deploy_bomb(event.key)
-                        self.view.load_sprite_bomb(event.key)
                     elif event.key == pygame.K_UP:  # If that key is 'up'
                         print("up")
+                        self.view.change_tntman_sprite(str(event.key))
                         if self.map.is_position_valid(CONTROLS
                                                       [str(event.key)]):
                             self.map.move_tm(CONTROLS[str(event.key)])
-                            self.view.change_tntman_sprite(str(event.key))
                     elif event.key == pygame.K_DOWN:  # If that key is 'down'
                         print("down")
+                        self.view.change_tntman_sprite(str(event.key))
                         if self.map.is_position_valid(CONTROLS
                                                       [str(event.key)]):
                             self.map.move_tm(CONTROLS[str(event.key)])
-                            self.view.change_tntman_sprite(str(event.key))
                     elif event.key == pygame.K_RIGHT:  # If that key is 'right'
                         print("right")
+                        self.view.change_tntman_sprite(str(event.key))
                         if self.map.is_position_valid(CONTROLS
                                                       [str(event.key)]):
                             self.map.move_tm(CONTROLS[str(event.key)])
-                            self.view.change_tntman_sprite(str(event.key))
                     elif event.key == pygame.K_LEFT:  # If that key is 'left'
                         print("left")
                         if self.map.is_position_valid(CONTROLS
