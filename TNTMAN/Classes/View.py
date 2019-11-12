@@ -44,8 +44,7 @@ class View():
                                 "../src/pinguino/pinguino_downwards.png")
                             ]
 
-        self.load_sprite_tntman("../src/pinguino/pinguino_right.png")  # Loads
-        # the tntman sprite for the first time.
+        self.load_sprite_tntman("../src/pinguino/pinguino_right.png")
 
         def build_map_array_view(self):
 
