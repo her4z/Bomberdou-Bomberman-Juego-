@@ -78,6 +78,8 @@ class Map():
             if self.map_array[i].position == new_position:
                 if isinstance(self.map_array[i].content, Blocks.Blocks):
                     return False
+                elif isinstance(self.map_array[i].content, Bomb.Bomb):
+                    return False
         return True
 
     def get_position_tntman(self):  # Getter.
