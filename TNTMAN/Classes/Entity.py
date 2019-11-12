@@ -31,12 +31,10 @@ class Entity():
     def set_hp(self, hp):  # Setter
         self.hp = hp
 
-    def is_position_valid(self, direction, objective):
-        """ Checks if a particular cell is filled with a block, if it
-            is, the player can't move in that direction."""
-        new_position = self.TNTMan.get_new_possible_position(direction)
-        for i in range(len(self.map_array)):  # Checks full array.
-            if self.map_array[i].position == new_position:
-                if isinstance(self.map_array[i].content, Blocks.Blocks):
-                    return False
-        return True
+    def get_new_possible_position(self, direction):
+        """ This method allows to calculate which the next possible
+            cell could be."""
+        aux_list = [1, 1]
+        aux_list[0] = self.actual_pos[0] + direction[0]
+        aux_list[1] = self.actual_pos[1] + direction[1]
+        return aux_list

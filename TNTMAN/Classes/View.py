@@ -78,7 +78,7 @@ class View():
                     map_array_view.append([(self.map.map_array[i].position
                                           [0] * size_value, (self.map.
                                           map_array[i].position)[1] *
-                                          size_value]))
+                                          size_value)])
 
             self.map_array_view = map_array_view
             self.cell_id_dict = cell_id_dict

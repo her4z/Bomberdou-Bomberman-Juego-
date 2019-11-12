@@ -10,14 +10,12 @@ sys.path.append(os.path.dirname(__file__))
 
 
 class Map():
-
     """ Map works as an admin inside the game, checking cells array and
        character position."""
-
     def __init__(self, dimentions):
         self.dimentions = dimentions  # Gotten from Driver.
         self.map_array = []  # Creates empty cell array.
-        self.TNTMan = TNTMan.TNTMan()  # Creates playable character.
+        self.TNTMan = TNTMan.TNTMan()  # creates playable character.
         self.Bomb = Bomb.Bomb(None)
         self.B_unbreakable_list = []
         self.B_breakable_list = []
@@ -36,6 +34,7 @@ class Map():
             border_list.append([0, row])
             border_list.append([24, row])
         for x in range(0, 25):
+
             for y in range(0, 19):
                 if [x, y] in border_list:
                     """
@@ -77,8 +76,7 @@ class Map():
         for i in range(len(self.map_array)):  # Checks full array.
             if self.map_array[i].position == new_position:
                 if isinstance(self.map_array[i].content, Blocks.Blocks):
-                    return False
-        return True
+                    raise KeyError
 
     def get_position_tntman(self):  # Getter.
         return self.TNTMan.get_position()
