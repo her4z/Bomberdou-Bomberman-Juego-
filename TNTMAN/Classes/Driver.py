@@ -37,29 +37,33 @@ class Driver:
             # self.clock.tick()
 
             for event in pygame.event.get():    # Catch all the pygame events.
-                print(event)
                 if event.type == pygame.QUIT:
                     quit()
                 if event.type == pygame.KEYDOWN:  # If a key is pressed:
                     if event.key == pygame.K_SPACE:
+                        print("Bombo Combo")
                         self.map.deploy_bomb(event.key)
                         self.view.load_sprite_bomb(event.key)
-                    elif event.key == pygame.K_UP:  # If that key is up
+                    elif event.key == pygame.K_UP:  # If that key is 'up'
+                        print("up")
                         if self.map.is_position_valid(CONTROLS
                                                       [str(event.key)]):
                             self.map.move_tm(CONTROLS[str(event.key)])
                             self.view.change_tntman_sprite(str(event.key))
-                    elif event.key == pygame.K_DOWN:  # If that key is down
+                    elif event.key == pygame.K_DOWN:  # If that key is 'down'
+                        print("down")
                         if self.map.is_position_valid(CONTROLS
                                                       [str(event.key)]):
                             self.map.move_tm(CONTROLS[str(event.key)])
                             self.view.change_tntman_sprite(str(event.key))
-                    elif event.key == pygame.K_RIGHT:  # If that key is right
+                    elif event.key == pygame.K_RIGHT:  # If that key is 'right'
+                        print("right")
                         if self.map.is_position_valid(CONTROLS
                                                       [str(event.key)]):
                             self.map.move_tm(CONTROLS[str(event.key)])
                             self.view.change_tntman_sprite(str(event.key))
-                    elif event.key == pygame.K_LEFT:  # If that key is left
+                    elif event.key == pygame.K_LEFT:  # If that key is 'left'
+                        print("left")
                         if self.map.is_position_valid(CONTROLS
                                                       [str(event.key)]):
                             self.map.move_tm(CONTROLS[str(event.key)])
