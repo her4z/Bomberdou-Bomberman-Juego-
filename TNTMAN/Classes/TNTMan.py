@@ -2,7 +2,7 @@ import Entity  # Import 'Entity.py' file.
 import View  # Import 'View.py' file.
 
 
-class TNTMan(Entity.Entity):
+class TNTMan():
     """TNTMan is the playable character. It is designed to move when
        the player wants it to move, and to do it cell by cell."""
     def __init__(self, pos=[1, 1]):
