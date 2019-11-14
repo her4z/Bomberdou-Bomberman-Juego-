@@ -1,6 +1,8 @@
 @startuml
 
-title TNTMan - UML Class Diagram
+
+
+Title TNTMan - UML Class Diagram
 
 class Driver{
   -dimentions: tuple
@@ -25,18 +27,13 @@ class Map{
   +get_B_breakable_list(): list
   +get_B_unbreakable_list(): list
   +is_position_valid(): Boolean
-  +get_position_tntman(): 
+  +get_position_tntman():
   +move_tm(): None
   +destroy_bomb(): None
   +is_there_any_bomb(): Boolean
-  +get_position_bomb(): 
+  +get_position_bomb():
   +deploy_bomb(): None
-  
-}
-
-
-
-
+  }
 
 class TNTMan{
   -actual_pos: list[]
@@ -61,7 +58,7 @@ class Blocks{
 }
 
 class BBreakable{
-+die(): Nonee  
++die(): Nonee
 }
 
 class BUnbreakable{
@@ -73,9 +70,10 @@ class BUnbreakable{
 Map --> Bomb
 Map --> Cells
 Map --> TNTMan
+Map --> Blocks
 Driver --> View
 Blocks <|-- BBreakable
 Blocks <|-- BUnbreakable
-Map <- Bomb
 Driver --> Map
-@endum
+@enduml
+

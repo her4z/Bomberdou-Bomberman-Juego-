@@ -68,8 +68,6 @@ class Driver:
                         if self.map.is_position_valid(CONTROLS
                                                       [str(event.key)]):
                             self.map.move_tm(CONTROLS[str(event.key)])
-                        
-                    
                 self.view.reload_background()
                 self.view.reload_tntman()
                 self.view.load_blocks()
