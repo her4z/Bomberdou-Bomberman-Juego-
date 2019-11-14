@@ -117,3 +117,6 @@ class Map():
                     if self.map_array[index].position == tntman_pos:
                         self.map_array[index].content = Bomb.Bomb(tntman_pos)
                         break
+
+    def easter_egg(self):
+        self.TNTMan.hi_luna_v2()

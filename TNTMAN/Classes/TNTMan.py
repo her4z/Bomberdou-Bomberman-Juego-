@@ -1,8 +1,8 @@
-import Entity  # Import 'Entity.py' file.
 import View  # Import 'View.py' file.
+import Entity  # Import 'Entity.py' file.
 
 
-class TNTMan():
+class TNTMan(Entity.Entity):
     """TNTMan is the playable character. It is designed to move when
        the player wants it to move, and to do it cell by cell."""
     def __init__(self, pos=[1, 1]):
@@ -30,3 +30,6 @@ class TNTMan():
 
     def get_position(self):  # Getter
         return self.actual_pos
+
+    def hi_luna_v2(self):
+        self.hi_luna()
