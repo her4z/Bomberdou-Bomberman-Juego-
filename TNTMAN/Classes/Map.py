@@ -9,6 +9,7 @@ import random
 sys.path.append(os.path.dirname(__file__))
 
 
+
 class Map():
 
     """ Map works as an admin inside the game, checking cells array and
@@ -21,6 +22,7 @@ class Map():
         self.Bomb = Bomb.Bomb(None)
         self.B_unbreakable_list = []
         self.B_breakable_list = []
+        self.pos_map_array_bomb = None
 
     def build_map_array(self):
         """ Bulding this array of cells helps programming movement
@@ -88,10 +90,10 @@ class Map():
     def move_tm(self, direction):  # Calls TNTMan to move character.
         self.TNTMan.move_to(direction, 1)
 
-    def destroy_bomb(self):
-        bomb_position = self.Bomb.get_position()
-        self.Bomb.set_position(None)
-        self.map_array[bomb_position].content = []
+    #def destroy_bomb(self):
+     #   bomb_position = self.Bomb.get_position()
+      #  self.Bomb.set_position(None)
+       # self.map_array[bomb_position].content = []
 
     def is_there_any_bomb(self):
         for cell in range(len(self.map_array)):
@@ -116,4 +118,12 @@ class Map():
                 for index in range(len(self.map_array)):
                     if self.map_array[index].position == tntman_pos:
                         self.map_array[index].content = Bomb.Bomb(tntman_pos)
+                        self.pos_map_array_bomb = index
+                        return True
                         break
+    
+    def explode_bomb(self):
+        self.map_array.pop(self.pos_map_array_bomb)
+
+
+    
