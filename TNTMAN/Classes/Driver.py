@@ -14,6 +14,7 @@ CONTROLS = {'273': [0, -1], '274': [0, 1], '275': [1, 0], '276': [-1, 0]}
 """ If any of these arrows are pressed, this dictionary searches for a
  list, which represents x and y values for TNTMan movement """
 
+
 class Thread(threading.Thread):
     def __init__(self, time_bomb):
         super().__init__()
@@ -21,6 +22,7 @@ class Thread(threading.Thread):
     def run(self):
         time.sleep(self.time_explode)
         dispatcher.send(message = 'Listo', signal=Thread_señal, sender=Thread_sender)
+
 
 class Driver:
 
@@ -88,11 +90,12 @@ class Driver:
                         if self.map.is_position_valid(CONTROLS
                                                       [str(event.key)]):
                             self.map.move_tm(CONTROLS[str(event.key)])
-
-                self.view.reload_background()
-                self.view.reload_tntman()
-                self.view.load_blocks()
-                   
+                    elif event.key == pygame.K_t:
+                        self.map.easter_egg()
+                    self.view.reload_background()
+                    self.view.reload_tntman()
+                    self.view.load_blocks()
+            
                 if self.map.is_there_any_bomb() is True:
                     """ In case there is a bomb, the main loop will"""
                     self.view.reload_bomb()

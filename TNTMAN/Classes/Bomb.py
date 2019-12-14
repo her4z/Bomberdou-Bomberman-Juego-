@@ -13,6 +13,6 @@ class Bomb():
 
     def set_position(self, pos):  # Setter.
         self.position = pos
-    
+
     def get_time(self):
         return self.time

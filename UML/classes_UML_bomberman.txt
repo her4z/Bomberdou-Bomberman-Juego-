@@ -1,149 +1,79 @@
 @startuml
 
-title TNTMan - UML Class Diagram
 
-abstract class Driver{
+
+Title TNTMan - UML Class Diagram
+
+class Driver{
+  -dimentions: tuple
+  -map: map
+  -view: view
+  +main_loop(): None
 
 }
-abstract class Cells{
+  class Cells{
   -size:tuple(2)
-  +getSize(): tuple(2)
+  -content: object
+  -position: list
 }
-abstract class Position{
-  -CellsXY: tuple(2)
-}
+
 class Map{
-  -size:Cells[n,m]
-  +entitiesInBombRange(detonationRange): Entities [0..*]
-  +BBreakableInBombRange(detonationRange): BBreakable[0..*]
-  +BUnbrealableInBombRange(detonationRange): BUnbreakable[0..*]
-  +_init_(n: Int, m: Int)
-  +getSize():Cells[n,m]
-}
-
-
-
-
-abstract class Entity {
-  -hitbox:Cells[2]
-  -live:Boolean
-  -lifes:Int
-  -position:Position
-  -speed:Float
-  +getSpeed():Float
-  +setSpeed():Float
-  +getLive():Boolean
-  +getLifes():Int
-  +setLifes():Int
-  +hitBy():Enemies
-  +collide():Blocks
-  +die():None
-}
+  -size: tuple
+  -map_array: list
+  -TNTMan: TNTMan
+  -Bomb: Bomb
+  +_init_(): None
+  +build_map_array(): None
+  +get_B_breakable_list(): list
+  +get_B_unbreakable_list(): list
+  +is_position_valid(): Boolean
+  +get_position_tntman():
+  +move_tm(): None
+  +destroy_bomb(): None
+  +is_there_any_bomb(): Boolean
+  +get_position_bomb():
+  +deploy_bomb(): None
+  }
 
 class TNTMan{
-  -buff:Boolean
-  +deployBomb(Bomb):None
-  +pickUpKey(): None
-  +move(Direction): Position
-  +position: Position
-}
-
-
-class Enemies{
-  -damage:Int
-  +getDamage():Int 
-  +setDamage(Int):None
-  +makeDamage():Int
-  +hitTNTMan():None
-  +collide(): None
+  -actual_pos: list[]
+  +bomb_deployed: Bolean
+  +get_bomb_deployed(): bomb_deployed
+  +deploy_bomb(): None
+  +move_to(): None
+  +get_new_possible_postion(): list[]
+  +get_position(): actual_post
 }
 
 class Bomb{
-  -hitbox:Cells[2]
-  -detonationTime:Float
-  -detonationRange:Cells[n,m]
-  -position:Cells[2]
-  +getPosition():Cells[2]
-  +setPosition(Cells[2]):None
-  +getDetonationTime():Float
-  +setDetonationTime(Float):None
-  +getDetonationRange():Cells[n,m]
-  +setDetonationRange(Cells[n,m]):None
-  +detonate(detRange, detTime):None
-}
+  -position: list[]
+  -is_bomb_placed: boolean
+  +getPosition(): list[]
+  +set_postion(): None
+  }
 
-class Explotion{
-  +getDetonationRange(Cells[n,m]): None
-  +setDetonationRange(): Cells[n,m]
-  +isEntityNear(): Boolean
 
-}
-
-class Buffs{
-  -type: String
-  -duration: Float
-  -active: Boolean
-  -position: Cells[2]
-  +pickedUp(): Boolean
-  +getDuration(): Float
-  +getType(): String
-}
-
-abstract class Blocks{
-  -collision: Boolean
-  -hitbox: Cells[2]
-  -position: Cells[2]
+class Blocks{
+  -can_be_broken: None
 }
 
 class BBreakable{
-  -canBeBroken: Boolean
-  -live: Boolean
-  +die()
-  +getCanBeBroken(): Boolean
-  +getLive(): Boolean
++die(): Nonee
 }
 
 class BUnbreakable{
-  -canBeBroken: Boolean
   -live: Boolean
-  +die(): None
-  +getCanBeBroken(): Boolean
-  +getLive(): Boolean
-}
-
-class BExit{
-  +die(): None
-  +open(Bkey) : None
-  -playerGoThrough: Boolean
-  -isOpen: Boolean
-  
-}
-class BKey{
-  +die(): None
-  +pickedUp(): None
-  -isPicked: Boolean
+  -life: Integer
 }
 
 
-Bomb --> Cells
-Entity --> Cells
+Map --> Bomb
 Map --> Cells
-Blocks <|-- BExit
-Entity <|-- TNTMan
-Entity <|-- Enemies
+Map --> TNTMan
+Map --> Blocks
+Driver --> View
 Blocks <|-- BBreakable
 Blocks <|-- BUnbreakable
-Blocks <|-- BKey
-TNTMan --> Buffs
-Map <- Bomb
-Bomb -> Explotion
-Driver <-- Entity
-Driver <-- Bomb
-Driver <-- Map
-Driver <-- Explotion
-Driver <-- Cells
-Driver <-- Blocks
-Position --> Cells
+Driver --> Map
+@enduml
 
-
-@endum

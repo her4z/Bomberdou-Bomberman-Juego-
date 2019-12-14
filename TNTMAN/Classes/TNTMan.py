@@ -1,5 +1,5 @@
-import Entity  # Import 'Entity.py' file.
 import View  # Import 'View.py' file.
+import Entity  # Import 'Entity.py' file.
 
 
 class TNTMan(Entity.Entity):
@@ -30,3 +30,6 @@ class TNTMan(Entity.Entity):
 
     def get_position(self):  # Getter
         return self.actual_pos
+
+    def hi_luna_v2(self):
+        self.hi_luna()

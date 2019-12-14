@@ -9,7 +9,6 @@ import random
 sys.path.append(os.path.dirname(__file__))
 
 
-
 class Map():
 
     """ Map works as an admin inside the game, checking cells array and
@@ -121,9 +120,9 @@ class Map():
                         self.pos_map_array_bomb = index
                         return True
                         break
-    
+
     def explode_bomb(self):
         self.map_array.pop(self.pos_map_array_bomb)
 
-
-    
+    def easter_egg(self):
+        self.TNTMan.hi_luna_v2()
